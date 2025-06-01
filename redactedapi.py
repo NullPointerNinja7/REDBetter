@@ -93,7 +93,7 @@ class RedactedAPI:
         while time.time() - self.last_request < self.rate_limit:
             time.sleep(0.1)
 
-        ajaxpage = 'https://redacted.ch/ajax.php'
+        ajaxpage = 'https://redacted.sh/ajax.php'
         params = {'action': action}
 
         params.update(kwargs)
@@ -122,7 +122,7 @@ class RedactedAPI:
         while time.time() - self.last_request < self.rate_limit:
             time.sleep(0.1)
 
-        ajaxpage = f'https://redacted.ch/ajax.php?action={action}'
+        ajaxpage = f'https://redacted.sh/ajax.php?action={action}'
         modified_kwargs = {}
         for key, value in kwargs.items():
             if isinstance(value, list):
@@ -336,7 +336,7 @@ class RedactedAPI:
             raise err
 
     # def set_24bit(self, torrent):
-    #     url = "https://redacted.ch/torrents.php?action=edit&id=%s" % torrent['id']
+    #     url = "https://redacted.sh/torrents.php?action=edit&id=%s" % torrent['id']
     #     response = self.session.get(url)
     #     forms = mechanize.ParseFile(StringIO(response.text.encode('utf-8')), url)
     #     form = forms[-3]
@@ -345,10 +345,10 @@ class RedactedAPI:
     #     return self.session.post(url, data=data, headers=dict(headers))
 
     def release_url(self, group, torrent):
-        return "https://redacted.ch/torrents.php?id=%s&torrentid=%s#torrent%s" % (group['group']['id'], torrent['id'], torrent['id'])
+        return "https://redacted.sh/torrents.php?id=%s&torrentid=%s#torrent%s" % (group['group']['id'], torrent['id'], torrent['id'])
 
     def permalink(self, torrent):
-        return "https://redacted.ch/torrents.php?torrentid=%s" % torrent['id']
+        return "https://redacted.sh/torrents.php?torrentid=%s" % torrent['id']
 
     def get_better(self, search_type=3, tags=None):
         if tags is None:

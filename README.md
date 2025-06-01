@@ -5,7 +5,7 @@
 This repository contains my personal fork of the REDBetter script, originally developed for What.CD by zacharydenton and updated by Mechazawa.
 
 ---
-REDBetter is a script which searches your torrent download directory for any FLAC torrents which do not have transcodes, then automatically transcodes and uploads the torrents to redacted.ch.
+REDBetter is a script which searches your torrent download directory for any FLAC torrents which do not have transcodes, then automatically transcodes and uploads the torrents to redacted.sh.
 
 ## Dependencies
 
@@ -63,8 +63,8 @@ You will receive a notification stating that you should edit the configuration f
     ~/.redactedbetter/config
 
 Open this file in your preferred text editor, and configure as desired. The options are as follows:
-* `username`: Your redacted.ch username.
-* `password`: Your redacted.ch password.
+* `username`: Your redacted.sh username.
+* `password`: Your redacted.sh password.
 * `data_dir`: The directory where your torrent downloads are stored.
 * `output_dir`: The directory where the transcoded torrent files will be stored. If left blank, it will use the value of `data_dir`.
 * `torrent_dir`: The directory where the generated `.torrent` files are stored.
@@ -105,7 +105,7 @@ To transcode and upload everything you have in your download directory (it could
 
 To transcode and upload a specific release (provided you have already downloaded the FLAC and it is located in your `data_dir`):
 
-    $> ./redactedbetter http://redacted.ch/torrents.php?id=1000\&torrentid=1000000
+    $> ./redactedbetter http://redacted.sh/torrents.php?id=1000\&torrentid=1000000
 
 Note that if you specify a particular release, redactedbetter will ignore your configuration's media types and attempt to transcode the releases you have specified regardless of their media type (so long as they are lossless types).
 

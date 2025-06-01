@@ -75,7 +75,7 @@ def scrub_tag(name, value):
     return scrubbed_value
 
 def check_tags(filename, check_tracknumber_format=True):
-    """Verify that the file has the required redacted.ch tags.
+    """Verify that the file has the required redacted.sh tags.
 
     Returns (True, None) if OK, (False, msg) if a tag is missing or
     invalid.

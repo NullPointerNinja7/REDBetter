@@ -30,7 +30,7 @@ def create_description(torrent, flac_dir, format, permalink):
         '',
         '[code]%s[/code]' % ' | '.join(cmds),
         '',
-        'Created using [url=https://redacted.ch/forums.php?action=viewthread&threadid=35524]REDBetter (NullPointerNinja7 fork of iw00t fork)[/url]'
+        'Created using [url=https://redacted.sh/forums.php?action=viewthread&threadid=35524]REDBetter (NullPointerNinja7 fork of iw00t fork)[/url]'
         ''
         ]
     return description
