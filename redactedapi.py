@@ -80,13 +80,25 @@ class RedactedAPI:
 
     def _login(self):
         data=self.request_get("index")
-        self.passkey=data["passkey"]
-        self.userid=data["id"]
-        if (self.passkey):
-            print("Retrieved passkey and user id from server")
-        else:
-            print("Failed to retrieve passkey from server")
-            sys.exit(0)
+        
+        if data is None:
+            print("ERROR: Login request failed - API authentication failed")
+            print("Please check that your API key is valid and not expired.")
+            print("You can get a new API key from your RED profile settings.")
+            sys.exit(1)
+            
+        try:
+            self.passkey=data["passkey"]
+            self.userid=data["id"]
+            if (self.passkey):
+                print("Retrieved passkey and user id from server")
+            else:
+                print("Failed to retrieve passkey from server")
+                sys.exit(0)
+        except KeyError as e:
+            print(f"ERROR: Expected key '{e}' not found in API response")
+            print(f"Available keys in response: {list(data.keys()) if data else 'None'}")
+            sys.exit(1)
 
     def request_get(self, action, **kwargs):
         '''Makes an AJAX request at a given action page'''
@@ -102,7 +114,8 @@ class RedactedAPI:
         try:
             parsed = json.loads(r.content)
             if parsed['status'] != 'success':
-                #raise RequestException
+                if 'error' in parsed and parsed['error'] == 'bad credentials':
+                    print("ERROR: Invalid API key - please update your API key in the config file")
                 return None
             return parsed['response']
         except ValueError:
